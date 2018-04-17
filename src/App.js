@@ -3,6 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  count(a, b) {
+    console.log(a + b);
+    return a + b;
+  }
+
   render() {
     return (
       <div className="App">
@@ -12,6 +17,7 @@ class App extends Component {
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
+          <button onClick={() => this.count(1, 2)}>Awesome button</button>
         </p>
       </div>
     );
