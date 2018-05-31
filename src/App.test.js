@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import Title from './App';
+import App, { Title } from './App';
 import TestRenderer from 'react-test-renderer';
 import ShallowRenderer from 'react-test-renderer/shallow';
 
@@ -11,9 +10,16 @@ it('renders without crashing', () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-it('check titles component title type', () => {
+it('check App component type', () => {
   const renderer = new ShallowRenderer();
   renderer.render(<App />);
   const result = renderer.getRenderOutput();
   expect(result.type).toBe('div');
+});
+
+it('check App component title type', () => {
+  const testRenderer = TestRenderer.create(<App />);
+  const testInstance = testRenderer.root;
+
+  expect(typeof testInstance.findByType(Title).props.title).toBe('string');
 });
